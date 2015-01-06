@@ -2,9 +2,10 @@
   <table>
     <tbody>
       <tr ng-repeat="(r, row) in grid">
-        <td ng-repeat="(c, cell) in row" ng-click="showCell(r, c, grid, cell)" ng-class="{zero: cell.isRevealed && !cell.isMined && cell.nearbyMines===0}">
+        <td ng-repeat="(c, cell) in row" ng-click="showCell(r, c, grid, cell)" ng-right-click="markSuspicious(r, c, grid, cell)" ng-class="{zero: cell.isRevealed && !cell.isMined && cell.nearbyMines===0}">
           <span ng-if="cell.isRevealed && !cell.isMined && cell.nearbyMines!==0">{{cell.nearbyMines}}</span>
           <span ng-if="cell.isRevealed && cell.isMined"><img class="mine" src="/images/mine-256x256x32.png" alt="x"></span>
+          <span ng-if="cell.suspicious"><img class="flag" src="/images/flag.png" alt="s"></span>
         </td>
       </tr>
     </tbody>

@@ -30,6 +30,13 @@ app.controller('MainCtrl', function($scope, notificationHelper, game) {
       }
     };
 
+    $scope.markSuspicious = function(row, col, grid, cell) {
+      if ($scope.gameStatus === 'active') {
+        cell.suspicious = true;
+        console.log('susp');
+      }
+    };
+
     $scope.revealAllMines = function(toggle) {
       game.iterateAllCells($scope.grid, function(cell) {
         if (cell.isMined) {
