@@ -1,0 +1,17 @@
+<div class="col-md-8 col-md-offset-2">
+  <table>
+    <tbody>
+      <tr ng-repeat="(r, row) in grid">
+        <td ng-repeat="(c, cell) in row" ng-click="showCell(r, c, grid, cell)" ng-class="{zero: cell.isRevealed && !cell.isMined && cell.nearbyMines===0}">
+          <span ng-if="cell.isRevealed && !cell.isMined && cell.nearbyMines!==0">{{cell.nearbyMines}}</span>
+          <span ng-if="cell.isRevealed && cell.isMined"><img class="mine" src="/images/mine-256x256x32.png" alt="x"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="controls col-md-8 col-md-offset-2">
+    <button class="btn btn-default" ng-click="revealAllMines(true)" ng-disabled="gameStatus==='inactive'">Reveal</button>
+    <button class="btn btn-default" ng-click="restartGame()">Restart</button>
+    <button class="btn btn-success" ng-click="validateGame(grid)" ng-disabled="gameStatus==='inactive'">Validate</button>
+  </div>
+</div>
